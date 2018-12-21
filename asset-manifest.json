@@ -1,7 +1,7 @@
 {
   "main.css": "/sliding_scale/static/css/main.5dee13e7.chunk.css",
-  "main.js": "/sliding_scale/static/js/main.836eb63c.chunk.js",
-  "main.js.map": "/sliding_scale/static/js/main.836eb63c.chunk.js.map",
+  "main.js": "/sliding_scale/static/js/main.d32b7350.chunk.js",
+  "main.js.map": "/sliding_scale/static/js/main.d32b7350.chunk.js.map",
   "static/css/1.3161e44f.chunk.css": "/sliding_scale/static/css/1.3161e44f.chunk.css",
   "static/js/1.dc59d625.chunk.js": "/sliding_scale/static/js/1.dc59d625.chunk.js",
   "static/js/1.dc59d625.chunk.js.map": "/sliding_scale/static/js/1.dc59d625.chunk.js.map",
@@ -10,6 +10,6 @@
   "static/css/main.5dee13e7.chunk.css.map": "/sliding_scale/static/css/main.5dee13e7.chunk.css.map",
   "static/css/1.3161e44f.chunk.css.map": "/sliding_scale/static/css/1.3161e44f.chunk.css.map",
   "index.html": "/sliding_scale/index.html",
-  "precache-manifest.bf57eab8941c0bcd232f1dad6d51828e.js": "/sliding_scale/precache-manifest.bf57eab8941c0bcd232f1dad6d51828e.js",
+  "precache-manifest.fbdb3d60ce296728fd7e5bb42fcad59e.js": "/sliding_scale/precache-manifest.fbdb3d60ce296728fd7e5bb42fcad59e.js",
   "service-worker.js": "/sliding_scale/service-worker.js"
 }
