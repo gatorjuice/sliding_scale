@@ -40,33 +40,54 @@ describe('Calculator', () => {
   it('properly calculates at the poverty line', () => {
     shallowCalculator.setState({householdIncome: 12140, householdMembers: 1});
 
-    expect(shallowCalculator.find('#service-cost').html()).toContain('0%');
-    expect(shallowCalculator.find('#hourly-charge').html()).toContain('$5.00');
+    expect(shallowCalculator.find('#service-cost').html()).toContain('20%');
+    expect(shallowCalculator.find('#hourly-charge').html()).toContain('$18.40');
   });
 
-  it('properly calculates just below the 125% of poverty line', () => {
+  it('properly calculates at just above the poverty line', () => {
+    shallowCalculator.setState({householdIncome: 12140.01, householdMembers: 1});
+
+    expect(shallowCalculator.find('#service-cost').html()).toContain('20%');
+    expect(shallowCalculator.find('#hourly-charge').html()).toContain('$18.40');
+  });
+
+  it('properly calculates just below 125% of poverty line', () => {
     shallowCalculator.setState({householdIncome: 20574.99, householdMembers: 2});
 
-    expect(shallowCalculator.find('#service-cost').html()).toContain('0%');
-    expect(shallowCalculator.find('#hourly-charge').html()).toContain('$5.00');
+    expect(shallowCalculator.find('#service-cost').html()).toContain('20%');
+    expect(shallowCalculator.find('#hourly-charge').html()).toContain('$18.40');
   });
 
-  it('properly calculates at the 125% of poverty line', () => {
+  it('properly calculates at 125% of poverty line', () => {
     shallowCalculator.setState({householdIncome: 20575, householdMembers: 2});
 
     expect(shallowCalculator.find('#service-cost').html()).toContain('20%');
     expect(shallowCalculator.find('#hourly-charge').html()).toContain('$18.40');
   });
 
-  it('properly calculates just below the 150% of poverty line', () => {
+  it('properly calculates just above 125% of poverty line', () => {
+    shallowCalculator.setState({householdIncome: 20575.01, householdMembers: 2});
+
+    expect(shallowCalculator.find('#service-cost').html()).toContain('20%');
+    expect(shallowCalculator.find('#hourly-charge').html()).toContain('$18.40');
+  });
+
+  it('properly calculates just below 150% of poverty line', () => {
     shallowCalculator.setState({householdIncome: 31169.99, householdMembers: 3});
 
     expect(shallowCalculator.find('#service-cost').html()).toContain('20%');
     expect(shallowCalculator.find('#hourly-charge').html()).toContain('$18.40');
   });
 
-  it('properly calculates at the 150% of poverty line', () => {
+  it('properly calculates at 150% of poverty line', () => {
     shallowCalculator.setState({householdIncome: 31170, householdMembers: 3});
+
+    expect(shallowCalculator.find('#service-cost').html()).toContain('40%');
+    expect(shallowCalculator.find('#hourly-charge').html()).toContain('$36.80');
+  });
+
+  it('properly calculates just above 150% of poverty line', () => {
+    shallowCalculator.setState({householdIncome: 31170.01, householdMembers: 3});
 
     expect(shallowCalculator.find('#service-cost').html()).toContain('40%');
     expect(shallowCalculator.find('#hourly-charge').html()).toContain('$36.80');

@@ -49,12 +49,12 @@ class Calculator extends React.Component {
     const highestTiers = [];
 
     povertyLevels.forEach((amount, index) => {
-      if (this.state.householdIncome >= amount) {
+      if (this.state.householdIncome < amount) {
         highestTiers.push(index);
       }
     })
 
-    return highestTiers[highestTiers.length - 1] || 0;
+    return highestTiers[0] || 0;
   }
 
   handleFocus(event) {
