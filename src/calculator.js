@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import NumberFormat from 'react-number-format';
 
-class Calculator extends Component {
+class Calculator extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,6 +15,7 @@ class Calculator extends Component {
     this.handleMedicadeFeeChange = this.handleMedicadeFeeChange.bind(this);
     this.calculatePovertyLevels = this.calculatePovertyLevels.bind(this);
     this.findLowestTier = this.findLowestTier.bind(this);
+    this.handleFocus = this.handleFocus.bind(this);
   }
 
   handleHouseholdMembersChange(event) {
@@ -45,7 +46,7 @@ class Calculator extends Component {
   findLowestTier() {
     const povertyLevels = this.calculatePovertyLevels(this.state.householdMembers);
 
-    let highestTiers = [];
+    const highestTiers = [];
 
     povertyLevels.forEach((amount, index) => {
       if (this.state.householdIncome >= amount) {
@@ -54,6 +55,10 @@ class Calculator extends Component {
     })
 
     return highestTiers[highestTiers.length - 1] || 0;
+  }
+
+  handleFocus(event) {
+    event.target.select();
   }
 
   render() {
