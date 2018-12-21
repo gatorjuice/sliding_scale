@@ -124,9 +124,9 @@ class Calculator extends React.Component {
           <br></br>
         </form>
         <p>Total Service Cost:</p>
-        <h3>{scale[this.findLowestTier()].percentOfServiceCost}%</h3>
+        <h3 id='service-cost'>{scale[this.findLowestTier()].percentOfServiceCost}%</h3>
         <p>Hourly Service Charge:</p>
-        <h3>${scale[this.findLowestTier()].hourlyServiceCharge.toFixed(2)}</h3>
+        <h3 id='hourly-charge'>${scale[this.findLowestTier()].hourlyServiceCharge.toFixed(2)}</h3>
       </div>
     )
   }
