@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import CurrencyInput from 'react-currency-input';
+import NumberFormat from 'react-number-format';
 
 class Calculator extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      povertyLevels: [12140],
       householdMembers: 1,
       householdIncome: 0.00,
       medicadeFee: 92.99
@@ -13,6 +14,7 @@ class Calculator extends Component {
     this.handleHouseholdIncomeChange = this.handleHouseholdIncomeChange.bind(this);
     this.handleHouseholdMembersChange = this.handleHouseholdMembersChange.bind(this);
     this.calculatePovertyLevel = this.calculatePovertyLevel.bind(this);
+    this.findLowestTier = this.findLowestTier.bind(this);
   }
 
   handleHouseholdMembersChange(event) {
@@ -38,8 +40,24 @@ class Calculator extends Component {
     });
   }
 
-  handleHouseholdIncomeChange(_event, householdIncome, _floatvalue){
-    this.setState({householdIncome});
+  handleHouseholdIncomeChange(event){
+    console.log(event.target.value)
+    this.setState({householdIncome: event.target.value});
+  }
+
+  findLowestTier() {
+    const povertyLevels = this.state.povertyLevels;
+
+    let highestTiers = [];
+    console.log(this.state.householdIncome)
+    povertyLevels.forEach((amount, index) => {
+      if (this.state.householdIncome > amount) {
+        highestTiers.push(index);
+        console.log(highestTiers);
+      }
+    })
+    console.log(highestTiers[highestTiers.length - 1])
+    return highestTiers[highestTiers.length - 1] || 0;
   }
 
   render() {
@@ -87,32 +105,27 @@ class Calculator extends Component {
           <br></br>
           <label>
             Household Income:
-            <CurrencyInput
+            <NumberFormat
               className='form-control'
-              name='householdIncome'
-              precision='0'
               value={this.state.householdIncome}
-              prefix='$'
-              onChangeEvent={this.handleHouseholdIncomeChange}
+              onChange={this.handleHouseholdIncomeChange}
             />
           </label>
           <br></br>
           <label>
             Medicade Fee:
-            <CurrencyInput
+            <NumberFormat
               className='form-control'
-              name='medicadeFee'
               value={this.state.medicadeFee}
-              prefix='$'
-              onChangeEvent={this.handleInputChange}
+              onChange={this.handleInputChange}
             />
           </label>
           <br></br>
         </form>
         <p>% of Total Service Cost:</p>
-        <h3>{scale[3].percentOfServiceCost}</h3>
+        <h3>{scale[this.findLowestTier()].percentOfServiceCost}</h3>
         <p>Hourly Service Charge:</p>
-        <h3>{scale[3].hourlyServiceCharge}</h3>
+        <h3>{scale[this.findLowestTier()].hourlyServiceCharge}</h3>
       </div>
     )
   }
