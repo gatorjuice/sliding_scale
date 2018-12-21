@@ -5,58 +5,54 @@ class Calculator extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      povertyLevels: [12140],
       householdMembers: 1,
       householdIncome: 0.00,
-      medicadeFee: 92.99
+      medicadeFee: 92.00
     };
 
     this.handleHouseholdIncomeChange = this.handleHouseholdIncomeChange.bind(this);
     this.handleHouseholdMembersChange = this.handleHouseholdMembersChange.bind(this);
-    this.calculatePovertyLevel = this.calculatePovertyLevel.bind(this);
+    this.handleMedicadeFeeChange = this.handleMedicadeFeeChange.bind(this);
+    this.calculatePovertyLevels = this.calculatePovertyLevels.bind(this);
     this.findLowestTier = this.findLowestTier.bind(this);
   }
 
   handleHouseholdMembersChange(event) {
-    const householdMembers = event.target.value;
-
-    this.setState({householdMembers});
-
-    this.calculatePovertyLevel(householdMembers);
+    this.setState({householdMembers: event.target.value});
   }
 
-  calculatePovertyLevel(householdMembers) {
+  handleMedicadeFeeChange(event) {
+    this.setState({medicadeFee: event.target.value});
+  }
+
+  calculatePovertyLevels(householdMembers) {
     const povertyLevel = 12140 + ((householdMembers - 1) * 4320);
 
-    this.setState({
-      povertyLevels: [
-        povertyLevel,
-        povertyLevel * 1.25,
-        povertyLevel * 1.5,
-        povertyLevel * 1.75,
-        povertyLevel * 2,
-        povertyLevel * 2.5
-      ]
-    });
+    return [
+      povertyLevel,
+      povertyLevel * 1.25,
+      povertyLevel * 1.5,
+      povertyLevel * 1.75,
+      povertyLevel * 2,
+      povertyLevel * 2.5
+    ]
   }
 
   handleHouseholdIncomeChange(event){
-    console.log(event.target.value)
     this.setState({householdIncome: event.target.value});
   }
 
   findLowestTier() {
-    const povertyLevels = this.state.povertyLevels;
+    const povertyLevels = this.calculatePovertyLevels(this.state.householdMembers);
 
     let highestTiers = [];
-    console.log(this.state.householdIncome)
+
     povertyLevels.forEach((amount, index) => {
-      if (this.state.householdIncome > amount) {
+      if (this.state.householdIncome >= amount) {
         highestTiers.push(index);
-        console.log(highestTiers);
       }
     })
-    console.log(highestTiers[highestTiers.length - 1])
+
     return highestTiers[highestTiers.length - 1] || 0;
   }
 
@@ -117,15 +113,15 @@ class Calculator extends Component {
             <NumberFormat
               className='form-control'
               value={this.state.medicadeFee}
-              onChange={this.handleInputChange}
+              onChange={this.handleMedicadeFeeChange}
             />
           </label>
           <br></br>
         </form>
-        <p>% of Total Service Cost:</p>
-        <h3>{scale[this.findLowestTier()].percentOfServiceCost}</h3>
+        <p>Total Service Cost:</p>
+        <h3>{scale[this.findLowestTier()].percentOfServiceCost}%</h3>
         <p>Hourly Service Charge:</p>
-        <h3>{scale[this.findLowestTier()].hourlyServiceCharge}</h3>
+        <h3>${scale[this.findLowestTier()].hourlyServiceCharge.toFixed(2)}</h3>
       </div>
     )
   }
