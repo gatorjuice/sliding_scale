@@ -1,34 +1,34 @@
-import React from 'react';
-import Enzyme from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import Calculator from './calculator';
+import React from 'react'
+import Enzyme from 'enzyme'
+import Adapter from 'enzyme-adapter-react-16'
+import Calculator from '../components/Calculator'
 
-Enzyme.configure({ adapter: new Adapter() });
+Enzyme.configure({ adapter: new Adapter() })
 
 describe('Calculator', () => {
-  let props;
-  let mountedCalculator;
-  let shallowCalculator;
+  let props
+  let mountedCalculator
+  let shallowCalculator
 
   const calculator = () => {
     if (!mountedCalculator) {
       mountedCalculator = Enzyme.mount(
         <Calculator {...props} />
-      );
+      )
     }
-    return mountedCalculator;
+    return mountedCalculator
   }
 
   beforeEach(() => {
-    props = {};
-    mountedCalculator = undefined;
-    shallowCalculator = Enzyme.shallow(<Calculator />);
-  });
+    props = {}
+    mountedCalculator = undefined
+    shallowCalculator = Enzyme.shallow(<Calculator />)
+  })
 
   it('always renders a div', () => {
-    const divs = calculator().find('div');
-    expect(divs.length).toBeGreaterThan(0);
-  });
+    const divs = calculator().find('div')
+    expect(divs.length).toBeGreaterThan(0)
+  })
 
   const testCases = [
     { householdIncome: 12139.99, householdMembers: 1, serviceCost: '0%', hourlyCharge: '$5.00' },
@@ -51,10 +51,10 @@ describe('Calculator', () => {
       shallowCalculator.setState({
         householdIncome: testCase.householdIncome,
         householdMembers: testCase.householdMembers
-      });
+      })
 
-      expect(shallowCalculator.find('#service-cost').html()).toContain(testCase.serviceCost);
-      expect(shallowCalculator.find('#hourly-charge').html()).toContain(testCase.hourlyCharge);
-    });
+      expect(shallowCalculator.find('#service-cost').html()).toContain(testCase.serviceCost)
+      expect(shallowCalculator.find('#hourly-charge').html()).toContain(testCase.hourlyCharge)
+    })
   })
-});
+})
