@@ -9,7 +9,7 @@ class Calculator extends React.Component {
       householdMembers: 1,
       householdIncome: 0.00,
       medicadeFee: 92.00
-    };
+    }
 
     this.handleChangeEvent = this.handleChangeEvent.bind(this);
     this.calculatePovertyLevels = this.calculatePovertyLevels.bind(this);

@@ -1,4 +1,4 @@
-function scale(medicadeFee) {
+function scale (medicadeFee) {
   return [
     {
       percentOfServiceCost: 0,
@@ -24,7 +24,7 @@ function scale(medicadeFee) {
       percentOfServiceCost: 100,
       hourlyServiceCharge: medicadeFee
     }
-  ];
+  ]
 }
 
-export default scale;
+export default scale
