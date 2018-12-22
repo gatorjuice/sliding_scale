@@ -1,34 +1,29 @@
-import React from 'react';
-import NumberFormat from 'react-number-format';
-import scale from './helpers/scale';
+import React from 'react'
+import NumberFormat from 'react-number-format'
+import scale from '../helpers/scale'
 
 class Calculator extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       householdMembers: 1,
       householdIncome: 0.00,
       medicadeFee: 92.00
     }
 
-    this.handleChangeEvent = this.handleChangeEvent.bind(this);
-    this.calculatePovertyLevels = this.calculatePovertyLevels.bind(this);
-    this.lowestPovertyLevelIndex = this.lowestPovertyLevelIndex.bind(this);
+    this.handleChangeEvent = this.handleChangeEvent.bind(this)
+    this.calculatePovertyLevels = this.calculatePovertyLevels.bind(this)
+    this.lowestPovertyLevelIndex = this.lowestPovertyLevelIndex.bind(this)
   }
 
-  handleChangeEvent(event) {
+  handleChangeEvent (event) {
     const name = event.target.name
     const value = event.target.value
-<<<<<<< Updated upstream:src/calculator.js
-
-    this.setState({[name]: value});
-=======
     this.setState({ [name]: value })
->>>>>>> Stashed changes:src/components/Calculator.js
   }
 
-  calculatePovertyLevels(householdMembers) {
-    const povertyLevel = 12140 + ((householdMembers - 1) * 4320);
+  calculatePovertyLevels (householdMembers) {
+    const povertyLevel = 12140 + ((householdMembers - 1) * 4320)
 
     return [
       povertyLevel,
@@ -40,25 +35,25 @@ class Calculator extends React.Component {
     ]
   }
 
-  lowestPovertyLevelIndex() {
-    const povertyLevels = this.calculatePovertyLevels(this.state.householdMembers);
+  lowestPovertyLevelIndex () {
+    const povertyLevels = this.calculatePovertyLevels(this.state.householdMembers)
 
-    const highestTiers = [];
+    const highestTiers = []
 
     povertyLevels.forEach((amount, index) => {
       if (this.state.householdIncome >= amount) {
-        highestTiers.push(index);
+        highestTiers.push(index)
       }
     })
 
-    return highestTiers[highestTiers.length - 1] || 0;
+    return highestTiers[highestTiers.length - 1] || 0
   }
 
-  render() {
-    const medicadeFee = this.state.medicadeFee;
+  render () {
+    const medicadeFee = this.state.medicadeFee
     const lowestTier = scale(medicadeFee)[this.lowestPovertyLevelIndex()]
 
-    return(
+    return (
       <div>
         <form>
           <label>
@@ -102,4 +97,4 @@ class Calculator extends React.Component {
   }
 }
 
-export default Calculator;
+export default Calculator
