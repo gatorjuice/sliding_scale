@@ -19,8 +19,12 @@ class Calculator extends React.Component {
   handleChangeEvent(event) {
     const name = event.target.name
     const value = event.target.value
+<<<<<<< Updated upstream:src/calculator.js
 
     this.setState({[name]: value});
+=======
+    this.setState({ [name]: value })
+>>>>>>> Stashed changes:src/components/Calculator.js
   }
 
   calculatePovertyLevels(householdMembers) {
@@ -71,6 +75,7 @@ class Calculator extends React.Component {
           <label>
             Household Income:
             <NumberFormat
+              name='householdIncome'
               className='form-control'
               value={this.state.householdIncome}
               onChange={this.handleChangeEvent}
@@ -80,6 +85,7 @@ class Calculator extends React.Component {
           <label>
             Medicade Fee:
             <NumberFormat
+              name='medicadeFee'
               className='form-control'
               value={this.state.medicadeFee}
               onChange={this.handleChangeEvent}
