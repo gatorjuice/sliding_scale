@@ -8,7 +8,7 @@ class Calculator extends React.Component {
     this.state = {
       householdMembers: 1,
       householdIncome: 0.00,
-      medicadeFee: 92.00
+      medicaidFee: 92.00
     }
 
     this.handleChangeEvent = this.handleChangeEvent.bind(this)
@@ -19,7 +19,6 @@ class Calculator extends React.Component {
   handleChangeEvent (event) {
     const name = event.target.name
     const value = event.target.value
-
     this.setState({ [name]: value })
   }
 
@@ -51,8 +50,8 @@ class Calculator extends React.Component {
   }
 
   render () {
-    const medicadeFee = this.state.medicadeFee
-    const lowestTier = scale(medicadeFee)[this.lowestPovertyLevelIndex()]
+    const medicaidFee = this.state.medicaidFee
+    const lowestTier = scale(medicaidFee)[this.lowestPovertyLevelIndex()]
 
     return (
       <div>
@@ -71,6 +70,8 @@ class Calculator extends React.Component {
           <label>
             Household Income:
             <NumberFormat
+              id='household-income'
+              name='householdIncome'
               className='form-control'
               value={this.state.householdIncome}
               onChange={this.handleChangeEvent}
@@ -80,8 +81,10 @@ class Calculator extends React.Component {
           <label>
             Medicade Fee:
             <NumberFormat
+              id='medicaid-fee'
+              name='medicaidFee'
               className='form-control'
-              value={this.state.medicadeFee}
+              value={this.state.medicaidFee}
               onChange={this.handleChangeEvent}
             />
           </label>
