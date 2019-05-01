@@ -7,8 +7,8 @@ class Calculator extends React.Component {
     super(props)
     this.state = {
       householdMembers: 1,
-      householdIncome: 0.00,
-      medicadeFee: 92.00
+      householdIncome: 0.0,
+      medicadeFee: 94.4
     }
 
     this.handleChangeEvent = this.handleChangeEvent.bind(this)
@@ -70,8 +70,10 @@ class Calculator extends React.Component {
           <br></br>
           <label>
             Household Income:
-            <NumberFormat
+            <input
               className='form-control'
+              name='householdIncome'
+              type='number'
               value={this.state.householdIncome}
               onChange={this.handleChangeEvent}
             />
@@ -79,6 +81,8 @@ class Calculator extends React.Component {
           <br></br>
           <label>
             Medicade Fee:
+            <br></br>
+            QMHP: $94.40 | MHP: $68.72
             <NumberFormat
               className='form-control'
               value={this.state.medicadeFee}
