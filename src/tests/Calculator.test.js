@@ -34,16 +34,16 @@ describe('Calculator', () => {
     { householdIncome: 12139.99, householdMembers: 1, serviceCost: '0%', hourlyCharge: '$5.00' },
     { householdIncome: 12140.00, householdMembers: 1, serviceCost: '0%', hourlyCharge: '$5.00' },
     { householdIncome: 20574.99, householdMembers: 2, serviceCost: '0%', hourlyCharge: '$5.00' },
-    { householdIncome: 20575.00, householdMembers: 2, serviceCost: '20%', hourlyCharge: '$18.40' },
-    { householdIncome: 31169.99, householdMembers: 3, serviceCost: '20%', hourlyCharge: '$18.40' },
-    { householdIncome: 31170.00, householdMembers: 3, serviceCost: '40%', hourlyCharge: '$36.80' },
-    { householdIncome: 43924.99, householdMembers: 4, serviceCost: '40%', hourlyCharge: '$36.80' },
-    { householdIncome: 43925.00, householdMembers: 4, serviceCost: '60%', hourlyCharge: '$55.20' },
-    { householdIncome: 58839.99, householdMembers: 5, serviceCost: '60%', hourlyCharge: '$55.20' },
-    { householdIncome: 58840.00, householdMembers: 5, serviceCost: '80%', hourlyCharge: '$73.60' },
-    { householdIncome: 84349.99, householdMembers: 6, serviceCost: '80%', hourlyCharge: '$73.60' },
-    { householdIncome: 84350.00, householdMembers: 6, serviceCost: '100%', hourlyCharge: '$92.00' },
-    { householdIncome: 1000000, householdMembers: 1, serviceCost: '100%', hourlyCharge: '$92.00' }
+    { householdIncome: 20575.00, householdMembers: 2, serviceCost: '20%', hourlyCharge: '$18.88' },
+    { householdIncome: 31169.99, householdMembers: 3, serviceCost: '20%', hourlyCharge: '$18.88' },
+    { householdIncome: 31170.00, householdMembers: 3, serviceCost: '40%', hourlyCharge: '$37.76' },
+    { householdIncome: 43924.99, householdMembers: 4, serviceCost: '40%', hourlyCharge: '$37.76' },
+    { householdIncome: 43925.00, householdMembers: 4, serviceCost: '60%', hourlyCharge: '$56.64' },
+    { householdIncome: 58839.99, householdMembers: 5, serviceCost: '60%', hourlyCharge: '$56.64' },
+    { householdIncome: 58840.00, householdMembers: 5, serviceCost: '80%', hourlyCharge: '$75.52' },
+    { householdIncome: 84349.99, householdMembers: 6, serviceCost: '80%', hourlyCharge: '$75.52' },
+    { householdIncome: 84350.00, householdMembers: 6, serviceCost: '100%', hourlyCharge: '$94.40' },
+    { householdIncome: 1000000, householdMembers: 1, serviceCost: '100%', hourlyCharge: '$94.40' }
   ]
 
   testCases.forEach((testCase) => {
