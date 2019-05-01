@@ -57,7 +57,7 @@ class Calculator extends React.Component {
       <div>
         <form>
           <label>
-            Household Members:
+            <p className='title'>Household Members:</p>
             <input
               className='form-control'
               name='householdMembers'
@@ -68,7 +68,7 @@ class Calculator extends React.Component {
           </label>
           <br></br>
           <label>
-            Household Income:
+            <p className='title'>Household Income:</p>
             <input
               className='form-control'
               name='householdIncome'
@@ -79,9 +79,8 @@ class Calculator extends React.Component {
           </label>
           <br></br>
           <label>
-            Medicaid Fee:
-            <br></br>
-            QMHP: $94.40 | MHP: $68.72
+            <p className='title'>Medicaid Fee:</p>
+            <p className='helper-text'>QMHP: $94.40 | MHP: $68.72</p>
             <input
               className='form-control'
               name='medicaidFee'
