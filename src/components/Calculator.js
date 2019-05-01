@@ -1,5 +1,4 @@
 import React from 'react'
-import NumberFormat from 'react-number-format'
 import scale from '../helpers/scale'
 
 class Calculator extends React.Component {
@@ -8,7 +7,7 @@ class Calculator extends React.Component {
     this.state = {
       householdMembers: 1,
       householdIncome: 0.0,
-      medicadeFee: 94.4
+      medicaidFee: 94.4
     }
 
     this.handleChangeEvent = this.handleChangeEvent.bind(this)
@@ -51,8 +50,8 @@ class Calculator extends React.Component {
   }
 
   render () {
-    const medicadeFee = this.state.medicadeFee
-    const lowestTier = scale(medicadeFee)[this.lowestPovertyLevelIndex()]
+    const medicaidFee = this.state.medicaidFee
+    const lowestTier = scale(medicaidFee)[this.lowestPovertyLevelIndex()]
 
     return (
       <div>
@@ -80,12 +79,14 @@ class Calculator extends React.Component {
           </label>
           <br></br>
           <label>
-            Medicade Fee:
+            Medicaid Fee:
             <br></br>
             QMHP: $94.40 | MHP: $68.72
-            <NumberFormat
+            <input
               className='form-control'
-              value={this.state.medicadeFee}
+              name='medicaidFee'
+              type='number'
+              value={this.state.medicaidFee}
               onChange={this.handleChangeEvent}
             />
           </label>
